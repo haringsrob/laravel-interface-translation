@@ -1,0 +1,11 @@
+{
+  "name": "laravel-interface-translation",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./resources/css/style.css -o ./dist/style.css --watch"
+  },
+  "author": "Harings Rob",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}

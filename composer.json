@@ -1,0 +1,56 @@
+{
+  "name": "haringsrob/laravel-interface-translation",
+  "description": "Laravel interface translation component written in Laravel",
+  "keywords": [
+    "haringsrob",
+    "laravel-interface-translation"
+  ],
+  "homepage": "https://github.com/haringsrob/laravel-interface-translation",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Harings Rob",
+      "email": "haringsrob@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "illuminate/support": "^9.0",
+    "livewire/livewire": "^v2.10",
+    "kkomelin/laravel-translatable-string-exporter": "^1.16",
+    "spatie/laravel-translation-loader": "^2.7"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Haringsrob\\LaravelInterfaceTranslation\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Haringsrob\\LaravelInterfaceTranslation\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Haringsrob\\LaravelInterfaceTranslation\\LaravelInterfaceTranslationServiceProvider"
+      ],
+      "aliases": {
+        "LaravelInterfaceTranslation": "Haringsrob\\LaravelInterfaceTranslation\\Facades\\LaravelInterfaceTranslation"
+      }
+    }
+  }
+}
