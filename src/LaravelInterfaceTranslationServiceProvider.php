@@ -2,6 +2,7 @@
 
 namespace Haringsrob\LaravelInterfaceTranslation;
 
+use Haringsrob\LaravelInterfaceTranslation\Commands\UpdateTranslations;
 use Haringsrob\LaravelInterfaceTranslation\Http\Livewire\TranslationList;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -43,7 +44,7 @@ class LaravelInterfaceTranslationServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([UpdateTranslations::class]);
         }
     }
 

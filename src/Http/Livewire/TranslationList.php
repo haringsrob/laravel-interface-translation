@@ -2,7 +2,7 @@
 
 namespace Haringsrob\LaravelInterfaceTranslation\Http\Livewire;
 
-use Haringsrob\LaravelInterfaceTranslation\Facades\LaravelInterfaceTranslation;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,6 +16,8 @@ class TranslationList extends Component
      * @var LanguageLine[]
      */
     public $items;
+
+    public ?string $saved = null;
 
     public function getRules()
     {
@@ -44,19 +46,13 @@ class TranslationList extends Component
                 $line->save();
             }
         }
+
+        $this->saved = Carbon::now()->format('Y-m-d H:i');
     }
 
     public function mount()
     {
         $this->items = LanguageLine::all()->toArray();
-    }
-
-    /**
-     * Action for parsing the files and updating the db.
-     */
-    public function updateDatabase(): void
-    {
-        LaravelInterfaceTranslation::parseAndUpdateDbWithStrings();
     }
 
     public function render(): View

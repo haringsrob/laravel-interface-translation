@@ -1,8 +1,11 @@
 <div>
-    <div class="flex w-full justify-end py-4 gap-5">
-        <button wire:click="updateDatabase"
-                class="p-4 bg-gray-600 rounded text-white">{{__('Parse and update database')}}</button>
+    <div class="flex w-full flex-col items-end py-4 gap-5">
         <button wire:click="save" class="p-4 bg-green-600 rounded text-white">{{__('Save translations')}}</button>
+        @if ($saved)
+            <div class="text-green-600 text-sm">
+                @lang('Last saved:') {{$saved}}
+            </div>
+        @endif
     </div>
     <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
         <thead class="bg-gray-100 dark:bg-gray-700">
