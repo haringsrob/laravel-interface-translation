@@ -51,6 +51,12 @@ In the config file set the languages you want to manage using the interface.
 vendor:publish --tag=laravel-interface-translation-config
 ```
 
+Then you can parse the translatable strings and prepare them in the database.
+
+```
+php artisan ui-translations:update
+```
+
 ## Embedding the standalone component
 
 This package comes with a standalone livewire component that you can add to any page in your project.
