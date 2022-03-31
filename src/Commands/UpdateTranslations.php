@@ -4,6 +4,7 @@ namespace Haringsrob\LaravelInterfaceTranslation\Commands;
 
 use Haringsrob\LaravelInterfaceTranslation\Facades\LaravelInterfaceTranslation;
 use Illuminate\Console\Command;
+use Spatie\TranslationLoader\LanguageLine;
 
 class UpdateTranslations extends Command
 {
@@ -14,5 +15,8 @@ class UpdateTranslations extends Command
     public function handle(): void
     {
         LaravelInterfaceTranslation::parseAndUpdateDbWithStrings();
+
+        // Cleanup old.
+        LanguageLine::where('group', 'laravel-interface-translation')->delete();
     }
 }

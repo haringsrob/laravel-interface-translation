@@ -2,6 +2,7 @@
 
 namespace Haringsrob\LaravelInterfaceTranslation;
 
+use Illuminate\Support\Str;
 use KKomelin\TranslatableStringExporter\Core\StringExtractor;
 use Spatie\TranslationLoader\LanguageLine;
 
@@ -27,8 +28,16 @@ class LaravelInterfaceTranslation
                 $text[$locale] = __($key, [], $locale);
             }
 
+            $group = Str::before($key, '::');
+            $key = Str::after($key, '::');
+
+            // A string containing :: and spaces is usually not a namespace.
+            if (Str::contains($group, ' ')){
+                $group = '*';
+            }
+
             $search = [
-                    'group' => 'laravel-interface-translation',
+                    'group' => $key !== $group ? $group : '*',
                     'key' => $key,
                 ];
 
