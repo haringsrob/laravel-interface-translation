@@ -57,6 +57,12 @@ Then you can parse the translatable strings and prepare them in the database.
 php artisan ui-translations:update
 ```
 
+Set the translation loader in the config of spatie's translation loader:
+
+```    
+'translation_manager' => \Haringsrob\LaravelInterfaceTranslation\TranslationLoaderManager::class,
+```
+
 ## Embedding the standalone component
 
 This package comes with a standalone livewire component that you can add to any page in your project.

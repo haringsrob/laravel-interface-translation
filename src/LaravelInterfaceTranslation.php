@@ -21,24 +21,33 @@ class LaravelInterfaceTranslation
 
         $objectList = [];
 
-        foreach ($list as $key => $value) {
+        foreach ($list as $group => $value) {
             $text = [];
 
             foreach (config('laravel-interface-translation.locales') as $locale) {
-                $text[$locale] = __($key, [], $locale);
+                $text[$locale] = __($group, [], $locale);
             }
 
-            $group = Str::before($key, '::');
-            $key = Str::after($key, '::');
+            if (Str::contains($group, '.') && !Str::contains($group, '::')) {
+                $namespace = '*::' . Str::before($group, '.');
+            }
+            else {
+                if (Str::contains($group, '.')) {
+                    $namespace = Str::before($group, '.');
+                }
+                else {
+                    $namespace = Str::before($group, '::');
+                }
+            }
 
-            // A string containing :: and spaces is usually not a namespace.
-            if (Str::contains($group, ' ')){
-                $group = '*';
+            // A string containing spaces is usually not a namespace.
+            if (Str::contains($namespace, ' ')){
+                $namespace = '*';
             }
 
             $search = [
-                    'group' => $key !== $group ? $group : '*',
-                    'key' => $key,
+                    'group' => $group !== $namespace ? $namespace : '*',
+                    'key' => $group,
                 ];
 
             $data = $search + ['text' => $text];
